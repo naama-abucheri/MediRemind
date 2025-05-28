@@ -26,6 +26,25 @@ MediRemind is an AI-powered follow-up reminder system designed for clinics and p
 | Claude.ai       | Prompt generation for reminders  |
 
 ---
+#Project Structure 
+MediRemind/
+│
+├── 📄 index.js               # Main entry point for the backend (Node.js server)
+├── 📄 .env                   # Environment variables (Twilio + Supabase credentials)
+├── 📄 package.json           # Project metadata and dependencies
+├── 📄 README.md              # Project documentation
+├── 📄 .gitignore             # Files to ignore when pushing to GitHub
+│
+├── 📁 public/                # Static files served to the frontend
+│   ├── 📄 index.html         # Simple UI for appointment input
+│   ├── 📄 style.css          # Optional CSS file for UI styling
+│   └── 📄 script.js          # JavaScript to interact with backend
+│
+├── 📁 utils/                 # Utility functions
+│   └── 📄 sendSMS.js         # Function to send SMS via Twilio
+│
+└── 📁 supabase/              # Supabase SQL and DB helpers
+    └── 📄 schema.sql         # SQL file for creating necessary tables
 
 
 
