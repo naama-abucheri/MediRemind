@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MediRemind</title>
+</head>
+<body>
+  <h1>MediRemind SMS Reminder</h1>
+  <form id="reminder-form">
+    <label>
+      Phone Number:
+      <input type="text" id="phone" placeholder="+254..." required>
+    </label>
+    <br><br>
+    <label>
+      Message:
+      <input type="text" id="message" placeholder="Reminder message" required>
+    </label>
+    <br><br>
+    <button type="submit">Send Reminder</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    const form = document.getElementById("reminder-form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const phone = document.getElementById("phone").value;
+      const message = document.getElementById("message").value;
+
+      const response = await fetch("http://localhost:3000/send-sms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ phone, message })
+      });
+
+      const data = await response.json();
+      document.getElementById("status").innerText = data.success
+        ? "✅ Reminder sent!"
+        : "❌ Failed to send: " + data.error;
+    });
+  </script>
+</body>
+</html>
